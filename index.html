@@ -1,0 +1,120 @@
+<!-- AI生成 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="408速记" />
+  <meta name="theme-color" content="#f2f2f7" />
+  <meta name="description" content="27考研 408 四科速记：重点、新增、得分技巧" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192-408.png" />
+  <link rel="apple-touch-icon" href="icon-408-180.png" />
+  <link rel="mask-icon" href="icon-408.svg" color="#0a84ff" />
+  <title>408 速记 · 27考研</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="nav-bar">
+      <div class="nav-safe"></div>
+      <div class="nav-row">
+        <button class="nav-back" id="btnBack" type="button" aria-label="返回" hidden>
+          <svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>返回</span>
+        </button>
+        <div class="nav-title" id="navTitle">408 速记</div>
+        <div class="nav-spacer" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="view active" id="view-home">
+        <div class="hero">
+          <div class="hero-badge">27 考研 · 近五年考纲精炼</div>
+          <h1 class="hero-title">拿起就背<br /><span class="hero-accent">408 四科速记</span></h1>
+          <p class="hero-sub">★ 重点 · 新增高亮 · 每科得分技巧 · 对比表与动画</p>
+          <div class="hero-stats">
+            <div class="stat"><strong>4</strong><span>科目</span></div>
+            <div class="stat"><strong>150</strong><span>总分</span></div>
+            <div class="stat"><strong>180</strong><span>分钟</span></div>
+          </div>
+        </div>
+
+        <div class="section-label">选择科目</div>
+        <div class="subject-grid">
+          <button class="subject-card sc-ds" data-open="ds" type="button">
+            <div class="sc-top"><span class="sc-icon">数</span><span class="sc-score">45′</span></div>
+            <div class="sc-name">数据结构</div>
+            <div class="sc-desc">树图排序 · 高频大题</div>
+            <div class="sc-tags"><span class="pill star">★ 重点密</span></div>
+          </button>
+          <button class="subject-card sc-co" data-open="co" type="button">
+            <div class="sc-top"><span class="sc-icon">组</span><span class="sc-score">45′</span></div>
+            <div class="sc-name">计组</div>
+            <div class="sc-desc">Cache · 流水线 · IEEE754</div>
+            <div class="sc-tags"><span class="pill star">★ 计算多</span></div>
+          </button>
+          <button class="subject-card sc-os" data-open="os" type="button">
+            <div class="sc-top"><span class="sc-icon">系</span><span class="sc-score">35′</span></div>
+            <div class="sc-name">操作系统</div>
+            <div class="sc-desc">进程 · 内存 · PV</div>
+            <div class="sc-tags"><span class="pill star">★ 同步必考</span></div>
+          </button>
+          <button class="subject-card sc-cn" data-open="cn" type="button">
+            <div class="sc-top"><span class="sc-icon">网</span><span class="sc-score">25′</span></div>
+            <div class="sc-name">计网</div>
+            <div class="sc-desc">TCP · IP · 子网划分</div>
+            <div class="sc-tags"><span class="pill star">★ 小题稳</span></div>
+          </button>
+        </div>
+
+        <div class="section-label">近五年分值结构</div>
+        <div class="score-bar" aria-label="分值结构">
+          <div class="sb-seg" style="--w:30%; --c:var(--ds)"><span>数据 45</span></div>
+          <div class="sb-seg" style="--w:30%; --c:var(--co)"><span>计组 45</span></div>
+          <div class="sb-seg" style="--w:23.3%; --c:var(--os)"><span>系统 35</span></div>
+          <div class="sb-seg" style="--w:16.7%; --c:var(--cn)"><span>计网 25</span></div>
+        </div>
+        <p class="footnote">题型：选择 80′ + 综合应用 70′。★ 近五年高频；新 = 表述细化/情境强化预标注。正式范围以当年 9 月官方大纲为准。</p>
+      </section>
+
+      <section class="view" id="view-subject"></section>
+    </main>
+
+    <nav class="dock-wrap" aria-label="主导航">
+      <div class="dock">
+        <button class="dock-item active" data-nav="home" type="button">
+          <span class="dock-icon">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M5 12.5L14 5l9 7.5V23a1.5 1.5 0 01-1.5 1.5h-5.2V17h-4.6v7.5H6.5A1.5 1.5 0 015 23v-10.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="dock-label">首页</span>
+        </button>
+        <button class="dock-item" data-nav="ds" type="button">
+          <span class="dock-icon dock-num">数</span>
+          <span class="dock-label">数据</span>
+        </button>
+        <button class="dock-item" data-nav="co" type="button">
+          <span class="dock-icon dock-num">组</span>
+          <span class="dock-label">计组</span>
+        </button>
+        <button class="dock-item" data-nav="os" type="button">
+          <span class="dock-icon dock-num">系</span>
+          <span class="dock-label">系统</span>
+        </button>
+        <button class="dock-item" data-nav="cn" type="button">
+          <span class="dock-icon dock-num">网</span>
+          <span class="dock-label">计网</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

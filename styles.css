@@ -348,13 +348,16 @@ body {
   margin-top: 8px;
   font: 800 28px/1.15 var(--font);
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.sub-meta {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.chip-score {
+  font: 700 13px/1 var(--font);
+  padding: 7px 11px;
+  flex-shrink: 0;
 }
 
 .chip {
@@ -364,12 +367,6 @@ body {
   background: rgba(255, 255, 255, 0.75);
   border: 0.5px solid var(--stroke);
   color: var(--ink-2);
-}
-
-.chip.strong {
-  color: #8a6000;
-  border-color: rgba(255, 214, 10, 0.45);
-  background: rgba(255, 214, 10, 0.28);
 }
 
 /* —— Technique box —— */
@@ -536,15 +533,48 @@ body {
 .point-label {
   display: inline-block;
   font: 800 11px/1 var(--font);
-  margin-right: 8px;
-  margin-bottom: 2px;
+  margin: 0 0 8px;
   padding: 4px 8px;
   border-radius: 7px;
-  vertical-align: 1.5px;
   letter-spacing: 0.06em;
   background: linear-gradient(180deg, #FFB300, #E6A800);
   color: #FFFFFF;
   box-shadow: 0 1px 3px rgba(180, 120, 0, 0.28);
+}
+
+.point-body { display: block; }
+
+.point-lines {
+  margin-top: 2px;
+  display: grid;
+  gap: 7px;
+}
+
+.point-lines p {
+  margin: 0;
+  font: 400 14.5px/1.65 var(--font);
+  color: var(--ink);
+  padding-left: 13px;
+  position: relative;
+}
+
+.point-lines p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #E6A800;
+  box-shadow: 0 0 0 2px rgba(255, 214, 10, 0.35);
+}
+
+.point.hl-new .point-label.n { margin-bottom: 8px; }
+
+.point.hl-new .point-lines p::before {
+  background: var(--green);
+  box-shadow: 0 0 0 2px rgba(48, 209, 88, 0.3);
 }
 
 .point.hl b,

@@ -302,7 +302,79 @@ body {
   padding: 0 4px;
 }
 
-/* —— 近十年排行 / 冷门 / 未考 —— */
+/* —— 首页考情入口按钮 —— */
+.entry-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.entry-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--stroke-soft);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  padding: 14px 14px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.entry-card:active {
+  transform: scale(0.98);
+  background: var(--bg-card-hover);
+}
+
+.entry-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font: 800 16px/1 var(--font);
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.e-rank .entry-icon { background: linear-gradient(160deg, #FFB300, #E6A800); }
+.e-cold .entry-icon { background: linear-gradient(160deg, #FF9F0A, #E08A00); }
+.e-never .entry-icon { background: linear-gradient(160deg, #8E8E93, #636366); }
+
+.entry-body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.entry-t {
+  font: 700 16px/1.25 var(--font);
+}
+
+.entry-d {
+  font: 400 12.5px/1.4 var(--font);
+  color: var(--ink-3);
+}
+
+.entry-chev {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--ink-3);
+  border-bottom: 2px solid var(--ink-3);
+  transform: rotate(-45deg);
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+
+.more-hero {
+  margin-top: 8px;
+}
+
+/* —— 近十年排行 / 冷门 / 未考（二级页） —— */
 .rank-list {
   list-style: none;
   margin: 0;

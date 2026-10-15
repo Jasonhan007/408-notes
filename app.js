@@ -2,9 +2,11 @@
   "use strict";
 
   const DATA = window.COURSE_408;
+  const MORE = window.MORE_PAGES || {};
   const views = {
     home: document.getElementById("view-home"),
     subject: document.getElementById("view-subject"),
+    more: document.getElementById("view-more"),
   };
   const navTitle = document.getElementById("navTitle");
   const btnBack = document.getElementById("btnBack");
@@ -24,8 +26,11 @@
   function setView(name, id, skipHash) {
     clearDemos();
     const isHome = name === "home";
+    const isSubject = name === "subject";
+    const isMore = name === "more";
     views.home.classList.toggle("active", isHome);
-    views.subject.classList.toggle("active", !isHome);
+    views.subject.classList.toggle("active", isSubject);
+    views.more.classList.toggle("active", isMore);
 
     if (isHome) {
       navTitle.textContent = "408 速记";
@@ -33,6 +38,16 @@
       dockItems.forEach((d) => d.classList.toggle("active", d.dataset.nav === "home"));
       if (!skipHash && location.hash && location.hash !== "#home") {
         history.pushState(null, "", "#home");
+      }
+    } else if (isMore) {
+      const page = MORE[id];
+      if (!page) return setView("home", null, skipHash);
+      renderMore(page);
+      navTitle.textContent = page.title;
+      btnBack.hidden = false;
+      dockItems.forEach((d) => d.classList.toggle("active", d.dataset.nav === "home"));
+      if (!skipHash && location.hash !== "#" + id) {
+        history.pushState(null, "", "#" + id);
       }
     } else {
       const c = DATA[id];
@@ -151,6 +166,52 @@
       </div>`;
     }
     return "";
+  }
+
+  function renderMore(p) {
+    views.more.style.setProperty("--sc", "#0a84ff");
+    if (p.kind === "rank") {
+      const list = p.items
+        .map(
+          (it) => `
+        <li class="rank-item">
+          <span class="rank-no${it.hot ? " hot" : ""}">${it.n}</span>
+          <div class="rank-body">
+            <div class="rank-t">${it.t}</div>
+            <div class="rank-m">
+              <span class="tag t-${it.sc}">${it.sub}</span>
+              <span class="rank-f">${it.f}</span>
+            </div>
+          </div>
+        </li>`
+        )
+        .join("");
+      views.more.innerHTML = `
+        <div class="sub-hero more-hero">
+          <div class="sub-kicker">${p.kicker}</div>
+          <h1 class="sub-title">${p.title}</h1>
+        </div>
+        <div class="block-label">知识点排行</div>
+        <ol class="rank-list">${list}</ol>
+        <p class="footnote">${p.note}</p>
+      `;
+      return;
+    }
+
+    const groups = p.groups
+      .map((g) => `<li><b>${g.sub}</b>${g.text}</li>`)
+      .join("");
+    views.more.innerHTML = `
+      <div class="sub-hero more-hero">
+        <div class="sub-kicker">${p.kicker}</div>
+        <h1 class="sub-title">${p.title}</h1>
+      </div>
+      <div class="risk-panel ${p.panel}" style="margin-top:14px">
+        <ul class="risk-list">${groups}</ul>
+        <p class="risk-note">${p.note}</p>
+      </div>
+      <p class="footnote">口径同首页说明：公开考频复盘，非官方逐题普查；以当年 9 月大纲为准。</p>
+    `;
   }
 
   function renderSubject(c) {
@@ -312,6 +373,9 @@
   document.querySelectorAll("[data-open]").forEach((el) => {
     el.addEventListener("click", () => setView("subject", el.dataset.open));
   });
+  document.querySelectorAll("[data-more]").forEach((el) => {
+    el.addEventListener("click", () => setView("more", el.dataset.more));
+  });
   btnBack.addEventListener("click", () => setView("home"));
   dockItems.forEach((d) => {
     d.addEventListener("click", () => {
@@ -323,11 +387,14 @@
 
   window.addEventListener("popstate", () => {
     const h = (location.hash || "#home").slice(1);
-    if (h === "home" || !DATA[h]) setView("home", null, true);
-    else setView("subject", h, true);
+    if (h === "home") setView("home", null, true);
+    else if (DATA[h]) setView("subject", h, true);
+    else if (MORE[h]) setView("more", h, true);
+    else setView("home", null, true);
   });
 
   const initial = (location.hash || "#home").slice(1);
   if (initial && DATA[initial]) setView("subject", initial, true);
+  else if (initial && MORE[initial]) setView("more", initial, true);
   else setView("home", null, true);
 })();

@@ -57,14 +57,28 @@
     return h;
   }
 
+  /** 重点/新增块：按中文/英文分号拆成一段 */
+  function splitSegs(text) {
+    return String(text)
+      .split(/[；;]/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  function segListHtml(text) {
+    const segs = splitSegs(text);
+    if (segs.length <= 1) return segs[0] || "";
+    return `<div class="point-lines">${segs.map((s) => `<p>${s}</p>`).join("")}</div>`;
+  }
+
   function pointsHtml(points) {
     return points
       .map((p) => {
         if (p.type === "star") {
-          return `<div class="point hl"><span class="point-label">★ 重点</span>${p.text}</div>`;
+          return `<div class="point hl"><span class="point-label">★ 重点</span><div class="point-body">${segListHtml(p.text)}</div></div>`;
         }
         if (p.type === "new") {
-          return `<div class="point hl-new"><span class="point-label n">新</span>${p.text}</div>`;
+          return `<div class="point hl-new"><span class="point-label n">新</span><div class="point-body">${segListHtml(p.text)}</div></div>`;
         }
         return `<div class="point">${p.text}</div>`;
       })
@@ -162,12 +176,7 @@
     views.subject.innerHTML = `
       <div class="sub-hero">
         <div class="sub-kicker">${c.weight}</div>
-        <h1 class="sub-title">${c.name}</h1>
-        <div class="sub-meta">
-          <span class="chip">${c.score}</span>
-          <span class="chip strong">近五年高频</span>
-          <span class="chip">27 考研预标注</span>
-        </div>
+        <h1 class="sub-title">${c.name}<span class="chip chip-score">${c.score}</span></h1>
       </div>
       <div class="tech-box">
         <h3>⚡ 得分技巧总结</h3>

@@ -73,14 +73,48 @@
           </button>
         </div>
 
-        <div class="section-label">近五年分值结构</div>
-        <div class="score-bar" aria-label="分值结构">
-          <div class="sb-seg" style="--w:30%; --c:var(--ds)"><span>数据 45</span></div>
-          <div class="sb-seg" style="--w:30%; --c:var(--co)"><span>计组 45</span></div>
-          <div class="sb-seg" style="--w:23.3%; --c:var(--os)"><span>系统 35</span></div>
-          <div class="sb-seg" style="--w:16.7%; --c:var(--cn)"><span>计网 25</span></div>
+        <div class="section-label">近十年常考知识点排行</div>
+        <ol class="rank-list" aria-label="常考排行">
+          <li class="rank-item"><span class="rank-no hot">1</span><div class="rank-body"><div class="rank-t">树与二叉树 · 遍历建树/哈夫曼/完全树性质</div><div class="rank-m"><span class="tag t-ds">数据</span><span class="rank-f">选择+大题 · 几乎每年</span></div></div></li>
+          <li class="rank-item"><span class="rank-no hot">2</span><div class="rank-body"><div class="rank-t">Cache 映射 · 地址划分/命中率/替换</div><div class="rank-m"><span class="tag t-co">计组</span><span class="rank-f">综合题核心 · 年年变式</span></div></div></li>
+          <li class="rank-item"><span class="rank-no hot">3</span><div class="rank-body"><div class="rank-t">进程同步 PV · 生产者消费者/读者写者</div><div class="rank-m"><span class="tag t-os">系统</span><span class="rank-f">综合题几乎必出</span></div></div></li>
+          <li class="rank-item"><span class="rank-no hot">4</span><div class="rank-body"><div class="rank-t">子网划分 · CIDR/掩码/广播地址</div><div class="rank-m"><span class="tag t-cn">计网</span><span class="rank-f">选择计算 · 高频送分</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">5</span><div class="rank-body"><div class="rank-t">排序 · 稳定性/一趟结果/时空复杂度</div><div class="rank-m"><span class="tag t-ds">数据</span><span class="rank-f">选择多题</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">6</span><div class="rank-body"><div class="rank-t">IEEE754 · 补码溢出/浮点真值互转</div><div class="rank-m"><span class="tag t-co">计组</span><span class="rank-f">选择+小计算</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">7</span><div class="rank-body"><div class="rank-t">死锁 · 银行家安全序列/四条件</div><div class="rank-m"><span class="tag t-os">系统</span><span class="rank-f">计算或选择</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">8</span><div class="rank-body"><div class="rank-t">TCP · 握手挥手状态机/序号确认</div><div class="rank-m"><span class="tag t-cn">计网</span><span class="rank-f">大题固定板块</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">9</span><div class="rank-body"><div class="rank-t">图算法 · MST/最短路/拓扑/关键路径</div><div class="rank-m"><span class="tag t-ds">数据</span><span class="rank-f">综合应用轮换</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">10</span><div class="rank-body"><div class="rank-t">流水线 · 吞吐加速比/三种冒险</div><div class="rank-m"><span class="tag t-co">计组</span><span class="rank-f">计算+选择</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">11</span><div class="rank-body"><div class="rank-t">地址变换 · 多级页表/TLB/置换算法</div><div class="rank-m"><span class="tag t-os">系统</span><span class="rank-f">综合常客</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">12</span><div class="rank-body"><div class="rank-t">路由转发 · 最长前缀/RIP·OSPF 概念</div><div class="rank-m"><span class="tag t-cn">计网</span><span class="rank-f">选择高频</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">13</span><div class="rank-body"><div class="rank-t">查找 · 折半判定树/散列 ASL</div><div class="rank-m"><span class="tag t-ds">数据</span><span class="rank-f">选择+小综合</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">14</span><div class="rank-body"><div class="rank-t">寻址方式 · 基址变址相对 EA 计算</div><div class="rank-m"><span class="tag t-co">计组</span><span class="rank-f">选择稳定出</span></div></div></li>
+          <li class="rank-item"><span class="rank-no">15</span><div class="rank-body"><div class="rank-t">CSMA/CD · 争用期与最小帧长</div><div class="rank-m"><span class="tag t-cn">计网</span><span class="rank-f">概念选择</span></div></div></li>
+        </ol>
+
+        <div class="section-label">冷门考点（近十年偶发）</div>
+        <div class="risk-panel cold">
+          <ul class="risk-list">
+            <li><b>数据</b>外部排序与败者树 · KMP nextval 手算 · 广义表运算 · 并查集按秩合并细节</li>
+            <li><b>计组</b>微指令字段编码细节 · 通道方式 · 海明码完整编码过程 · 浮点乘除分步</li>
+            <li><b>系统</b>作业调度指标 · SPOOLing 井结构 · RAID 级别 · 死锁检测形式化</li>
+            <li><b>计网</b>SNMP 网管 · CSMA/CA 定长退避细节 · X.25/帧中继 · 表示层加密流程</li>
+          </ul>
+          <p class="risk-note">偶发=十年内出现 0–2 次或仅选择题一带而过；建议过一遍概念，不必狂刷大题。</p>
         </div>
-        <p class="footnote">题型：选择 80′ + 综合应用 70′。★ 近五年高频；新 = 表述细化/情境强化预标注。正式范围以当年 9 月官方大纲为准。</p>
+
+        <div class="section-label">大纲有 · 近十年几乎未考</div>
+        <div class="risk-panel never">
+          <ul class="risk-list">
+            <li><b>数据</b>红黑树性质深入 · 多维数组地址公式推广 · 广义表共享结构</li>
+            <li><b>计组</b>恢复余数法除法全程 · 通道与 I/O 处理机 · 总线标准枚举列举</li>
+            <li><b>系统</b>中级调度/对换细节 · 信号量集 AND 类 · 文件保护 ACL 完整推演</li>
+            <li><b>计网</b>移动 IP · PGP/S-MIME 邮件加密 · 蓝牙/802.11 帧细节 · 会话层协议</li>
+          </ul>
+          <p class="risk-note">口径：2015–2025 真题公开考点复盘中几乎未单独设题；大纲仍保留，防止偏题可扫读，勿深挖。</p>
+        </div>
+
+        <p class="footnote">排行与冷门/未考依据近十年真题公开考频复盘口径（王道体系及机构统计惯例）整理，非官方逐题普查；★ 高频 / 新 预标注仍以当年 9 月官方大纲为准。题型：选择 80′ + 综合应用 70′。</p>
       </section>
 
       <section class="view" id="view-subject"></section>

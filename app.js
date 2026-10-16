@@ -72,10 +72,10 @@
     return h;
   }
 
-  /** 重点/新增块：按中文/英文分号拆成一段 */
+  /** 重点/新增块：按分号或句号拆成一段 */
   function splitSegs(text) {
     return String(text)
-      .split(/[；;]/)
+      .split(/[；;。]/)
       .map((s) => s.trim())
       .filter(Boolean);
   }
